@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/post');
  const mongoose = require('mongoose');
  const url = require('./config/mongokey');
 // const Ninja = require('./models/ninja');
@@ -22,6 +23,7 @@ dotenv.config();
 
  app.use("/api/user", userRoutes);
  app.use("/api/auth", authRoutes);
+ app.use("/api/post", postRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log("Started on PORT : " + PORT,),);

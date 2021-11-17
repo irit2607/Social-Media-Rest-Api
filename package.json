@@ -23,6 +23,12 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.1.0",
+    "@mui/material": "^5.1.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "helmet": "^4.6.0",

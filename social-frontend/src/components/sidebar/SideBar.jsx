@@ -10,7 +10,8 @@ import {
     Event,
     School,
   } from "@material-ui/icons";
-
+  import {Users} from "../../dummyData";
+import CloseFriend from "../closefrnd/Closefriend"
   import "./sidebar.css";
 
 const Sidebar = () => {
@@ -54,14 +55,17 @@ const Sidebar = () => {
           <School className="sidebarIcon" />
           <span className="sidebarListItemText">Courses</span>
         </li>
+        
 
         
       </ul>
       <button className="sidebarButton">Show More</button>
       <hr className="sidebarHr" />
       <ul className="sidebarFriendList">
-      
-      </ul>
+          {Users.map((u) => (
+            <CloseFriend key={u.id} user={u} />
+          ))}
+        </ul>
     </div>
   </div>
   );

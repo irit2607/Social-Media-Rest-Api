@@ -55,10 +55,10 @@ export const Users = [
     {
       id: 1,
       desc: "Love For All, Hatred For None.",
-      photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToAMoG52uaq8D5Z_cAjqoy1f7wEwlrXipF2A&usqp=CAU",
+      photo: "https://avatars.githubusercontent.com/u/67689773?v=4",
       date: "5 mins ago",
       userId: 1,
-      like: 32,
+      like: 111,
       comment: 9,
     },
     {

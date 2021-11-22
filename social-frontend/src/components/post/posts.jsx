@@ -2,10 +2,13 @@ import "./posts.css";
 import { MoreVert } from "@material-ui/icons";
 // import { Users } from "../../dummyData";
 import { useState, useEffect } from "react";
+import { format } from "timeago.js";
 import axios from "axios";
+import {Link} from "react-router-dom";
+
 
 export default function Posts({post}) {
-  const [like,setLike] = useState(post.like)
+  const [like,setLike] = useState(post.likes.length)
   const [isLiked,setIsLiked] = useState(false)
 const [user, setUser] = useState({});
 
@@ -15,7 +18,7 @@ const [user, setUser] = useState({});
       setUser(res.data);
     }
    fetchUser();
-  }, [])
+  }, [post.userId]);
 
 const likeHandler = () => {
   setLike(isLiked ? like-1 : like+1)
@@ -26,15 +29,17 @@ const likeHandler = () => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+          <Link to={`/profile/${user.username}`}>
             <img
               className="postProfileImg"
              src={user.profilePicture} alt=""
             />
+            </Link>
             <span className="postUsername">
               {user.username}
                 {/* 0 is first element */}
             </span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />

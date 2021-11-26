@@ -2,7 +2,7 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route, Redirect
 } from "react-router-dom";
 import Home from './pages/home/home'
 import Profile from './pages/profile/Profile'
@@ -14,10 +14,10 @@ function App() {
   return (
     <Router>
        <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={user ? <Home/> : <Register/>} />
           <Route path='/profile/:username' element={<Profile />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={user ? <Redirect to="/" />: <Login />} />
+          <Route path='/register' element={user ? <Redirect to="/" />: <Login />}/>
           
         </Routes>
     </Router>

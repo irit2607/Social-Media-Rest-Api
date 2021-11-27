@@ -5,7 +5,8 @@ import Feed from "../../components/feed/feeds";
 import Rightbar from "../../components/rightbar/Rightbar";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {useParams} from "react-router"
+import {useParams} from "react-router";
+
 
 export default function Profile() {
   const [user, setUser] = useState({});

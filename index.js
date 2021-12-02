@@ -7,12 +7,38 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
  const mongoose = require('mongoose');
  const url = require('./config/mongokey');
+ const multer = require("multer");
 // const Ninja = require('./models/ninja');
 const app = express();
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
+
+const path = require("path");
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "public/images");
+    },
+    filename: (req, file, cb) => {
+      cb(null, req.body.name);
+    },
+  });
+  
+  const upload = multer({ storage: storage });
+  app.post("/api/upload", upload.single("file"), (req, res) => {
+    try {
+      return res.status(200).json("File uploded successfully");
+    } catch (error) {
+      console.error(error);
+    }
+    
+  });
 
 dotenv.config();
 
